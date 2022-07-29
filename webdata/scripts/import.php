@@ -19,7 +19,7 @@ class Importer
                     'company_id' => intval($company_id),
                     'board_type' => ('name' == $board_type) ? 1 : 0,
                     'board_id' => ('name' == $board_type) ? crc32($board_value) : $board_value,
-                    'board_name' => ('name' == $board_type) ? $board_nme : '',
+                    'board_name' => ('name' == $board_type) ? $board_type : '',
                     'amount' => intval(str_replace(',', '', $amount)),
                 ));
             } catch (Pix_Table_DuplicateException $e) {
