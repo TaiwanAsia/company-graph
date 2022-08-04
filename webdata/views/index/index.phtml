@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= json_decode($this->unit_title) ?>台灣公司關係圖</title>
 <link rel="stylesheet" href="/static/build.css" />
 <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -29,10 +30,7 @@ _gaq.push(['_trackPageview']);
 <?php if ($this->id) { ?>
 <span id="status">計算關係中...</span>
 <?php } ?>
-<div style="position: fixed; border: 2px solid; width: 200px; height: 300px; right: 5px; bottom: 5px">
-    <ul id="color-hint">
-    </ul>
-</div>
+
 <div id="parent"></div>
 <script src="/static/insights.standalone.js"></script>
 <script>
