@@ -2,8 +2,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= json_decode($this->unit_title) ?>台灣公司關係圖</title>
+    <meta content="device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0" id="viewport" name="viewport">
+
+
+    <title><?= json_decode($this->unit_title) ?>台灣公司關係圖</title>
 <link rel="stylesheet" href="/static/build.css" />
 <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
 <?php if (getenv('GOOGLEANALYTICS_ACCOUNT')) { ?>
@@ -32,6 +34,17 @@ _gaq.push(['_trackPageview']);
 <?php } ?>
 
 <div id="parent"></div>
+
+<style type="text/css">
+
+    html, body { -webkit-text-size-adjust: none; -moz-text-size-adjust: none; -ms-text-size-adjust: none; text-size-adjust: none; }
+
+    body {
+        margin: 0px;
+    }
+
+</style>
+
 <script src="/static/insights.standalone.js"></script>
 <script>
 var color_map = {
@@ -87,7 +100,7 @@ $('#query-form').submit(function(e){
 
             graph = new Insights(el, nodes, links, {
                 width: screen.width,
-                height: screen.height,
+                height: 700,
                 colors: color_map
             });
 
@@ -102,6 +115,13 @@ $('#query-form').submit(function(e){
             graph.tooltip("<div>word: {{text}}({{no}})</div><div>資本額: {{amount}}</div> <div><h3>董監事名單</h3><pre>{{funder}}</pre></div>");
             }, 'json');
 }();
+
+
+document.documentElement.addEventListener('touchstart', function (event) {
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
 </script>
 </body>
 </html>
